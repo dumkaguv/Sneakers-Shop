@@ -4,6 +4,7 @@ const ACTIONS = [
   {
     icon: "/cart-icon.svg",
     text: "0 руб.",
+    onClick: () => onClick,
   },
   {
     icon: "/favorite-icon.svg",

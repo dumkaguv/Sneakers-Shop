@@ -1,14 +1,24 @@
-import React from "react";
-import styles from "./ProductCard.module.scss";
+import { useState } from "react";
 
-function ProductCard({ price, name, index }) {
-  const [isInCart, setIsInCart] = React.useState(false);
-  const [isFavorite, setIsFavorite] = React.useState(false);
+import styles from "./ProductCard.module.scss";
+import addToCart from "@/api/cart/addToCart";
+import removeFromCart from "@/api/cart/removeFromCart";
+
+function ProductCard({ parentId, price, name, image }) {
+  const [isInCart, setIsInCart] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const item = { parentId, price, name, image };
+
+  function onAddInCartButtonClick() {
+    isInCart ? removeFromCart(item) : addToCart(item);
+
+    setIsInCart((prev) => !prev);
+  }
 
   return (
     <div className={styles.card}>
       <div className={styles.wrapper}>
-        <img src={`/items/${index}.jpg`} alt="" width={133} height={112} />
+        <img src={image} alt="" width={133} height={112} loading="lazy" />
         <button
           onClick={() => setIsFavorite((prev) => !prev)}
           className={`${styles.buttonAction} ${isFavorite && styles.isFavorite}`}
@@ -39,7 +49,7 @@ function ProductCard({ price, name, index }) {
         </div>
         <button
           className={styles.addButton}
-          onClick={() => setIsInCart((prev) => !prev)}
+          onClick={onAddInCartButtonClick}
           type="button"
           tabIndex={0}
         >

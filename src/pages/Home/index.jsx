@@ -1,7 +1,9 @@
 import { useState } from "react";
+
 import Slider from "@/components/Slider";
 import ProductList from "@/components/ProductList";
 import SearchBar from "@/components/SearchBar";
+import Drawer from "@/components/Drawer"
 
 import styles from "./Home.module.scss";
 
@@ -13,11 +15,12 @@ function Home() {
   };
 
   function onInputChange(event) {
-    setSearchInputValue(event.target.value);
+    setSearchInputValue(event?.target?.value ?? "");
   }
 
   return (
     <>
+      <Drawer />
       <Slider />
 
       <section>

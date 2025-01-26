@@ -1,4 +1,5 @@
 .root {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,6 +7,7 @@
   border: none;
   background-color: var(--color-green-20);
   color: var(--color-light);
+  padding: 14px 20px;
 
   @include hover {
     background-color: color-mix(
@@ -19,5 +21,12 @@
 .small {
   border-radius: 110px;
   width: 178px;
-  padding: 14px 20px;
+  height: 47px;
+}
+
+.large {
+  border-radius: 18px;
+  width: 325px;
+  height: 55px;
+  background-color: var(--color-accent);
 }

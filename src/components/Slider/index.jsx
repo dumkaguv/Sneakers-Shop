@@ -1,5 +1,5 @@
 import styles from "./Slider.module.scss";
-import Button from "../Button";
+import Button from "@/components/UI/Button";
 
 function Slider() {
   return (

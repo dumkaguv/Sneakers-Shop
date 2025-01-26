@@ -15,7 +15,12 @@ function ProductList({ searchInputValue = "" }) {
         )
         .map((item, index) => (
           <li key={`${item}-${index}`}>
-            <ProductCard price={item.price} name={item.name} index={index + 1} />
+            <ProductCard
+              parentId={index}
+              price={item.price}
+              name={item.name}
+              image={item.image}
+            />
           </li>
         ))}
     </ul>
