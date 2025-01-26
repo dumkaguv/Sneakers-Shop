@@ -1,0 +1,12 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  column-gap: 20px;
+
+  h2 {
+    font-size: fluid(24, 32);
+    font-weight: 700;
+  }
+}

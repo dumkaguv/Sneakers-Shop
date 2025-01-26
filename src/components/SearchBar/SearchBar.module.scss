@@ -1,0 +1,29 @@
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input {
+  padding: 5px 15px;
+  padding-left: 40px;
+  border: var(--border);
+  border-radius: 10px;
+  width: 250px;
+  height: 45px;
+
+  &::placeholder {
+    opacity: 0.4;
+  }
+}
+
+.root {
+  position: relative;
+
+  svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    translate: 0 -50%;
+    opacity: 0.4;
+  }
+}

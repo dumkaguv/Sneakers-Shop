@@ -1,0 +1,35 @@
+@use "../helpers" as *;
+
+:root {
+  --color-black: #000000;
+  --color-light: #fff;
+
+  --color-gray-50: #eaeaea;
+  --color-gray-40: #bdbdbd;
+  --color-gray-30: #9d9d9d;
+  --color-gray-20: #9b9b9b;
+  --color-gray-10: #5c5c5c;
+
+  --color-beige: #f4efe9;
+
+  --color-green-20: #a5d364;
+  --color-green-10: #8bb43c;
+
+  --color-pink: #fef0f0;
+  --color-red: #ff8585;
+
+  --color-accent: #9dd458;
+
+  --color-bg: #e7f6ff;
+
+  --gradient: (180deg, #89f09c 0%, #3cc755 100%);
+
+  --border: 1px solid #f3f3f3;
+
+  --font-family-base: "BeVietnamPro", sans-serif;
+
+  --container-width: #{rem(960)};
+  --container-padding-x: #{rem(16)};
+
+  --transition-duration: 0.2s;
+}

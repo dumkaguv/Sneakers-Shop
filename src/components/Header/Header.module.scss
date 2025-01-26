@@ -1,0 +1,55 @@
+.root {
+  margin-top: 45px;
+  padding-block: 45px;
+  border-bottom: 1px solid var(--color-gray-50);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  &Wrapper {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &Info {
+    display: grid;
+  }
+}
+
+.title {
+  font-size: fluid(18, 20);
+  font-weight: 700;
+}
+
+.subTitle {
+  font-size: fluid(12, 14);
+}
+
+.actions {
+  display: flex;
+  column-gap: 32px;
+
+  &Button {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    column-gap: fluid(5, 8);
+    color: var(--color-gray-10);
+    border: none;
+    background: transparent;
+
+    @include hover {
+      color: var(--color-accent);
+
+      .actionsIcon {
+        transition-duration: 0.1s;
+        filter: brightness(0) saturate(100%) invert(85%) sepia(14%) saturate(1563%)
+          hue-rotate(36deg) brightness(91%) contrast(91%);
+      }
+    }
+  }
+}

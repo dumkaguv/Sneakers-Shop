@@ -1,0 +1,134 @@
+.card {
+  display: grid;
+  row-gap: 15px;
+  background-color: var(--color-light);
+  height: 260px;
+  padding-inline: 30px;
+  border: var(--border);
+  border-radius: 40px;
+  padding-block: 20px;
+  transition: translate var(--transition-duration),
+    box-shadow var(--transition-duration);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  @include hover {
+    translate: 0 -10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.wrapper {
+  position: relative;
+}
+
+.buttonAction {
+  --size: 30px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  border: var(--border);
+  border-radius: 10px;
+
+  @include square(var(--size));
+
+  &.isFavorite {
+    background-color: #ff9e9e30;
+
+    svg {
+      color: var(--color-red);
+      opacity: 1;
+    }
+
+    @include hover {
+      opacity: 0.6;
+
+      svg {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  @include hover {
+    background-color: #ff9e9e30;
+
+    svg {
+      color: var(--color-red);
+      opacity: 1;
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -45% -45%;
+    opacity: 0.3;
+  }
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: var(--color-black);
+  font-size: 13px;
+  font-weight: 400;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  svg {
+    stroke: white;
+    color: #f3f3f3;
+    cursor: pointer;
+
+    rect {
+      fill: white;
+    }
+  }
+}
+
+.price {
+  color: var(--color-black);
+  font-size: 14px;
+  font-weight: 700;
+
+  &Wrapper {
+    display: grid;
+  }
+
+  &Text {
+    color: var(--color-gray-40);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+}
+
+.addIcon {
+  transition-duration: var(--transition-duration);
+  color: var(--color-gray-40) !important;
+
+  @include hover {
+    color: var(--color-gray-10) !important;
+  }
+}
+
+.addButton {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  height: 30px;
+  width: 30px;
+}

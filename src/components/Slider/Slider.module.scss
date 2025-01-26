@@ -1,0 +1,56 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 45px;
+
+  background-color: var(--color-beige);
+  max-width: 960px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+
+.logo {
+  margin-bottom: 32px;
+}
+
+.info {
+  display: grid;
+  max-width: 280px;
+  width: 100%;
+  row-gap: 10px;
+  padding-left: 40px;
+}
+
+.title {
+  font-size: fluid(30, 38);
+}
+
+.image {
+  position: relative;
+  right: -20px;
+  width: 670px;
+}
+
+.sliderButton {
+  --size: 35px;
+
+  position: absolute;
+  right: -17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  background-color: var(--color-light);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.146);
+
+  @include square(var(--size));
+}
+
+.green {
+  color: #8BB43C;
+}

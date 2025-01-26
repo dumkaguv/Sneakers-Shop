@@ -1,0 +1,23 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  border: none;
+  background-color: var(--color-green-20);
+  color: var(--color-light);
+
+  @include hover {
+    background-color: color-mix(
+      in srgb,
+      rgb(104, 246, 64) 30%,
+      var(--color-green-20)
+    );
+  }
+}
+
+.small {
+  border-radius: 110px;
+  width: 178px;
+  padding: 14px 20px;
+}
