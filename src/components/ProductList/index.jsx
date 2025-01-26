@@ -2,38 +2,22 @@ import React from "react";
 
 import styles from "./ProductList.module.scss";
 import ProductCard from "@/components/ProductCard";
-import getItems from "@/api/getItems";
+import useItemsContext from "@/contexts/ItemsContext";
 
-function ProductList() {
-  const [items, setItems] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-
-        const data =  await getItems();
-        setItems(data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  console.log(items);
+function ProductList({ searchInputValue = "" }) {
+  const { items } = useItemsContext();
 
   return (
     <ul className={`${styles.root} container`}>
-      {items.map((item, index) => (
-        <li key={`${item}-${index}`}>
-          <ProductCard price={item.price} name={item.name} index={index + 1} />
-        </li>
-      ))}
+      {items
+        .filter((item) =>
+          item.name.toLowerCase().includes(searchInputValue.toLowerCase())
+        )
+        .map((item, index) => (
+          <li key={`${item}-${index}`}>
+            <ProductCard price={item.price} name={item.name} index={index + 1} />
+          </li>
+        ))}
     </ul>
   );
 }

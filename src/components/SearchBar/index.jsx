@@ -1,10 +1,14 @@
-import React from "react";
 import styles from "./SearchBar.module.scss";
 
-function SearchBar() {
+function SearchBar({ inputValue, setInputValue }) {
   return (
     <div className={styles.root}>
-      <input placeholder="Поиск..." type="search" />
+      <input
+        onChange={setInputValue}
+        value={inputValue}
+        placeholder="Поиск..."
+        type="search"
+      />
       <svg
         height="24px"
         id="Layer_1"
