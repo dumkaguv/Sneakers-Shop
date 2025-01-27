@@ -1,43 +1,68 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 import styles from "./Drawer.module.scss";
 import Button from "@/components/UI/Button";
 import useCartContext from "@/contexts/CartContext";
 
 function Drawer() {
-  const { getItemsFromCart, isCartOpen, setIsCartOpen } = useCartContext();
-  const [cartItems, setCartItems] = useState([]);
+  const {
+    cartItems,
+    setCartItems,
+    getCartItems,
+    removeFromCart,
+    totalPrice,
+    setTotalPrice,
+    tax,
+    setTax,
+    isCartOpen,
+    setIsCartOpen,
+  } = useCartContext();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getItemsFromCart();
-        const data = response.data;
+    if (isCartOpen) {
+      getCartItems();
+    }
+  }, [isCartOpen]);
 
-        setCartItems(data);
-      } catch (error) {
-        console.error("cart drawer error", error);
-      }
-    };
+  function onButtonClose(item) {
+    
+    const updatedCartItems = cartItems.filter(
+      (prev) => prev.parentId !== item.parentId
+    );
 
-    fetchData();
-  }, [getItemsFromCart]);
+    setCartItems(updatedCartItems);
+
+    const newTotalPrice = updatedCartItems.reduce(
+      (totalPrice, currentPrice) => totalPrice + currentPrice.price,
+      0
+    );
+
+    setTotalPrice(newTotalPrice);
+    setTax(newTotalPrice * 0.05);
+
+    removeFromCart(item);
+  }
 
   if (!isCartOpen) {
     return null;
   }
 
-  console.log(cartItems);
-
   return (
-    <div className={styles.wrapper}>
+    <div
+      onClick={(event) => {
+        if (event.target === event.currentTarget) {
+          setIsCartOpen(false);
+        }
+      }}
+      className={styles.wrapper}
+    >
       <div className={styles.content}>
         <div className={styles.top}>
           <h2>Корзина</h2>
           <svg
             className={styles.closeIcon}
             onClick={() => setIsCartOpen(false)}
-            onKeyDown={() => {
+            onKeyDown={(event) => {
               if (event.key === "Enter") setIsCartOpen(false);
             }}
             xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +82,11 @@ function Drawer() {
                 <h3 className={styles.title}>{item.name}</h3>
                 <span className={styles.price}>{item.price} руб.</span>
               </div>
-              <button className={styles.buttonDelete} type="button">
+              <button
+                onClick={() => onButtonClose(item)}
+                className={styles.buttonDelete}
+                type="button"
+              >
                 <svg
                   className={styles.iconDelete}
                   xmlns="http://www.w3.org/2000/svg"
@@ -88,11 +117,11 @@ function Drawer() {
           <div className={styles.totalRows}>
             <div className={styles.totalRow}>
               <span className={styles.totalKey}>Итого:</span>
-              <span className={styles.totalValue}>21 498 руб.</span>
+              <span className={styles.totalValue}>{totalPrice} руб.</span>
             </div>
             <div className={styles.totalRow}>
               <span className={styles.totalKey}>Налог 5%:</span>
-              <span className={styles.totalValue}>1074 руб.</span>
+              <span className={styles.totalValue}>{tax.toFixed(2)} руб.</span>
             </div>
           </div>
           <Button buttonSize="large">

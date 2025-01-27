@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./ProductCard.module.scss";
 import useCartContext from "@/contexts/CartContext";
 
 function ProductCard({ parentId, price, name, image }) {
-  const { addToCart, removeFromCart } = useCartContext();
+  const { cartItems, addToCart, removeFromCart } = useCartContext();
   const [isInCart, setIsInCart] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const item = { parentId, price, name, image };
+
+  useEffect(() => {
+    setIsInCart(cartItems.some((cartItem) => cartItem.parentId === parentId));
+  }, [cartItems]);
 
   function onAddInCartButtonClick() {
     isInCart ? removeFromCart(item) : addToCart(item);

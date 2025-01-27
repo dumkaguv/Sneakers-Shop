@@ -1,23 +1,35 @@
+import { useEffect, useState } from "react";
+
 import styles from "./Header.module.scss";
 import useCartContext from "../../contexts/CartContext";
 
-const ACTIONS = [
-  {
-    icon: "/cart-icon.svg",
-    text: "0 руб.",
-  },
-  {
-    icon: "/favorite-icon.svg",
-    text: "Закладки",
-  },
-  {
-    icon: "/profile-icon.svg",
-    text: "Профиль",
-  },
-];
-
 function Header() {
-  const { setIsCartOpen } = useCartContext();
+  const { cartItems, setIsCartOpen } = useCartContext();
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const ACTIONS = [
+    {
+      icon: "/cart-icon.svg",
+      text: `${totalPrice} руб.`,
+    },
+    {
+      icon: "/favorite-icon.svg",
+      text: "Закладки",
+    },
+    {
+      icon: "/profile-icon.svg",
+      text: "Профиль",
+    },
+  ];
+
+  useEffect(() => {
+    setTotalPrice(
+      cartItems.reduce(
+        (totalPrice, currentPrice) => totalPrice + currentPrice.price,
+        0
+      )
+    );
+  }, [cartItems]);
 
   return (
     <div className={styles.root}>

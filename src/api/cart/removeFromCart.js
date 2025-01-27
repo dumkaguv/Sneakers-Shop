@@ -5,8 +5,7 @@ import getItemsFromCart from "./getItemsFromCart";
 
 async function removeFromCart(item) {
   try {
-    const response = await getItemsFromCart();
-    const data = response.data;
+    const data = await getItemsFromCart();
 
     const targetId = data.find((obj) => item.parentId === obj.parentId).id;
 
