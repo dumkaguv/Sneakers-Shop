@@ -1,10 +1,10 @@
 import styles from "./Header.module.scss";
+import useCartContext from "../../contexts/CartContext";
 
 const ACTIONS = [
   {
     icon: "/cart-icon.svg",
     text: "0 руб.",
-    onClick: () => onClick,
   },
   {
     icon: "/favorite-icon.svg",
@@ -17,6 +17,8 @@ const ACTIONS = [
 ];
 
 function Header() {
+  const { setIsCartOpen } = useCartContext();
+
   return (
     <div className={styles.root}>
       <div className={`container ${styles.content}`}>
@@ -29,7 +31,12 @@ function Header() {
         </a>
         <div className={styles.actions}>
           {ACTIONS.map((action, index) => (
-            <button key={index} className={styles.actionsButton} type="button">
+            <button
+              onClick={() => setIsCartOpen((prev) => !prev)}
+              key={index}
+              className={styles.actionsButton}
+              type="button"
+            >
               <img className={styles.actionsIcon} src={action.icon} alt="" />
               <span>{action.text}</span>
             </button>

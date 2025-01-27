@@ -1,5 +1,4 @@
 .wrapper {
-  display: none;
   position: fixed;
   right: 0;
   top: 0;
@@ -150,4 +149,13 @@
 .iconArrow {
   position: absolute;
   right: 35px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.closeIcon {
+  cursor: pointer;
 }

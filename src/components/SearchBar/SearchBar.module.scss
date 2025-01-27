@@ -21,6 +21,7 @@ input {
 
   svg.closeIcon {
     left: calc(100% - 35px);
+    pointer-events: all;
     cursor: pointer;
   }
 
@@ -30,5 +31,6 @@ input {
     top: 50%;
     translate: 0 -50%;
     opacity: 0.4;
+    pointer-events: none;
   }
 }

@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Home from "@/pages/Home";
 import styled from "styled-components";
 import { ItemsProvider } from "@/contexts/ItemsContext";
+import { CartProvider } from "@/contexts/CartContext";
 
 const Container = styled.div`
   width: 1080px;
@@ -14,8 +15,10 @@ function App() {
   return (
     <Container>
       <ItemsProvider>
-        <Header />
-        <Home />
+        <CartProvider>
+          <Header />
+          <Home />
+        </CartProvider>
       </ItemsProvider>
     </Container>
   );

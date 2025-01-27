@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 import styles from "./ProductCard.module.scss";
-import addToCart from "@/api/cart/addToCart";
-import removeFromCart from "@/api/cart/removeFromCart";
+import useCartContext from "@/contexts/CartContext";
 
 function ProductCard({ parentId, price, name, image }) {
+  const { addToCart, removeFromCart } = useCartContext();
   const [isInCart, setIsInCart] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const item = { parentId, price, name, image };
