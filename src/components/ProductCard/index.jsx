@@ -4,7 +4,7 @@ import styles from "./ProductCard.module.scss";
 import useCartContext from "@/contexts/CartContext";
 
 function ProductCard({ parentId, price, name, image }) {
-  const { cartItems, addToCart, removeFromCart } = useCartContext();
+  const { cartItems, getCartItems, addToCart, removeFromCart } = useCartContext();
   const [isInCart, setIsInCart] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const item = { parentId, price, name, image };
@@ -13,10 +13,11 @@ function ProductCard({ parentId, price, name, image }) {
     setIsInCart(cartItems.some((cartItem) => cartItem.parentId === parentId));
   }, [cartItems]);
 
-  function onAddInCartButtonClick() {
-    isInCart ? removeFromCart(item) : addToCart(item);
-
+  async function onAddInCartButtonClick() {
     setIsInCart((prev) => !prev);
+    isInCart ? await removeFromCart(item) : await addToCart(item);
+
+    await getCartItems();
   }
 
   return (

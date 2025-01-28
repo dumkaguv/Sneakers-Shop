@@ -13,10 +13,10 @@ function ProductList({ searchInputValue = "" }) {
         .filter((item) =>
           item.name.toLowerCase().includes(searchInputValue.toLowerCase())
         )
-        .map((item, index) => (
-          <li key={`${item}-${index}`}>
+        .map((item) => (
+          <li key={Number(item.id)}>
             <ProductCard
-              parentId={index}
+              parentId={Number(item.id)}
               price={item.price}
               name={item.name}
               image={item.image}

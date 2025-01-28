@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Slider from "@/components/Slider";
 import ProductList from "@/components/ProductList";
 import SearchBar from "@/components/SearchBar";
-import Drawer from "@/components/Drawer"
+import Drawer from "@/components/Drawer";
+import useCartContext from "@/contexts/CartContext";
 
 import styles from "./Home.module.scss";
 
@@ -13,6 +14,11 @@ function Home() {
     searchEmpty: "Все кроссовки",
     searchNotEmpty: `Поиск по запросу "${searchInputValue}"`,
   };
+  const { getCartItems } = useCartContext();
+
+  useEffect(() => {
+    getCartItems();
+  }, []);
 
   function onInputChange(event) {
     setSearchInputValue(event?.target?.value ?? "");

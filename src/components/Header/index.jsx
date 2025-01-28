@@ -7,28 +7,10 @@ function Header() {
   const { cartItems, setIsCartOpen } = useCartContext();
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const ACTIONS = [
-    {
-      icon: "/cart-icon.svg",
-      text: `${totalPrice} руб.`,
-    },
-    {
-      icon: "/favorite-icon.svg",
-      text: "Закладки",
-    },
-    {
-      icon: "/profile-icon.svg",
-      text: "Профиль",
-    },
-  ];
-
   useEffect(() => {
-    setTotalPrice(
-      cartItems.reduce(
-        (totalPrice, currentPrice) => totalPrice + currentPrice.price,
-        0
-      )
-    );
+    
+    const price = cartItems.reduce((total, item) => total + item.price, 0);
+    setTotalPrice(price);
   }, [cartItems]);
 
   return (
@@ -42,17 +24,22 @@ function Header() {
           </div>
         </a>
         <div className={styles.actions}>
-          {ACTIONS.map((action, index) => (
-            <button
-              onClick={() => setIsCartOpen((prev) => !prev)}
-              key={index}
-              className={styles.actionsButton}
-              type="button"
-            >
-              <img className={styles.actionsIcon} src={action.icon} alt="" />
-              <span>{action.text}</span>
-            </button>
-          ))}
+          <button
+            onClick={() => setIsCartOpen((prev) => !prev)}
+            className={styles.actionsButton}
+            type="button"
+          >
+            <img className={styles.actionsIcon} src="/cart-icon.svg" alt="" />
+            <span>{totalPrice} руб.</span>
+          </button>
+          <button className={styles.actionsButton} type="button">
+            <img className={styles.actionsIcon} src="/favorite-icon.svg" alt="" />
+            <span>Закладки</span>
+          </button>
+          <button className={styles.actionsButton} type="button">
+            <img className={styles.actionsIcon} src="/profile-icon.svg" alt="" />
+            <span>Профиль</span>
+          </button>
         </div>
       </div>
     </div>
