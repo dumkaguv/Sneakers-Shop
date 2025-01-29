@@ -1,7 +1,19 @@
 .root {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  margin-top: 40px;
-  padding-bottom: 25px;
+  gap: fluid(20, 40);
+  margin-top: fluid(20, 40);
+  padding-bottom: fluid(15, 25);
+
+  @include tablet-l {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile-s {
+    grid-template-columns: 1fr;
+  }
 }

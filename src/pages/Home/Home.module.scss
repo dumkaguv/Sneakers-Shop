@@ -2,11 +2,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: fluid(30, 40);
   column-gap: 20px;
 
   h2 {
     font-size: fluid(24, 32);
     font-weight: 700;
+  }
+
+  @include mobile-s {
+    flex-direction: column;
+    row-gap: 12px;
   }
 }

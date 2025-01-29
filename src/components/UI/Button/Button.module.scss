@@ -29,8 +29,13 @@
 
 .medium {
   width: 245px;
+
+  @include mobile {
+    width: 220px;
+  }
 }
 
 .large {
-  width: 325px;
+  width: fluid(230, 325);
+
 }

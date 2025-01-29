@@ -1,12 +1,27 @@
 .root {
   margin-top: 45px;
-  padding-block: 45px;
+  padding-block: fluid(25, 45);
   border-bottom: 1px solid var(--color-gray-50);
+
+  @include tablet-l {
+    margin-top: 20px;
+  }
+
+  @include tablet {
+    margin-top: 0;
+  }
 }
 
 .content {
   display: flex;
   justify-content: space-between;
+
+  @include mobile-s {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 12px;
+  }
 }
 
 .logo {

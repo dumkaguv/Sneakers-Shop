@@ -9,7 +9,7 @@ import { ItemsProvider } from "@/contexts/ItemsContext";
 import { CartProvider } from "@/contexts/CartContext";
 
 const Container = styled.div`
-  width: 1080px;
+  max-width: 1080px;
   margin-inline: auto;
   border-radius: 8px;
   background-color: #fff;

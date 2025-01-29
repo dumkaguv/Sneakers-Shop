@@ -49,7 +49,7 @@ function ProductCard({ parentId, price, name, image }) {
   return (
     <div className={styles.card}>
       <div className={styles.wrapper}>
-        <img src={image} alt="" width={133} height={112} loading="lazy" />
+        <img className={styles.cardImage} src={image} alt="" width={133} height={112} loading="lazy" />
         <button
           onClick={onFavoriteButtonClick}
           className={`${styles.buttonAction} ${isFavorite && styles.isFavorite}`}

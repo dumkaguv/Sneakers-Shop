@@ -2,13 +2,21 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 45px;
+  justify-content: center;
+  margin-top: fluid(20, 45);
 
   background-color: var(--color-beige);
-  max-width: 960px;
+  max-width: fluid(850, 960);
   border-radius: 20px;
   width: 100%;
+
+  @include tablet {
+    max-width: 715px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+  }
 }
 
 .logo {
@@ -17,21 +25,49 @@
 
 .info {
   display: grid;
+  justify-items: center;
   max-width: 280px;
   width: 100%;
   row-gap: 10px;
-  padding-left: 40px;
+  padding-left: fluid(20, 40);
+
+  @include mobile {
+    padding-left: 0;
+    padding-block: 20px;
+  }
 }
 
 .title {
   font-size: fluid(30, 38);
+
+  @include mobile {
+    text-align: center;
+  }
 }
 
 .image {
   position: relative;
   right: -20px;
-  width: 670px;
-  height: 350px;
+  width: 100%;
+  height: fluid(250, 350);
+
+  @include tablet {
+    max-width: 460px;
+  }
+
+  @include mobile {
+    max-width: unset;
+    right: 0;
+    width: calc(100% + 32px);
+    background-color: var(--color-beige);
+    height: auto;
+    height: 300px;
+    max-height: 400px;
+  }
+
+  @include mobile-s {
+    height: 220px;
+  }
 }
 
 .sliderButton {
@@ -50,8 +86,16 @@
 
   @include square(var(--size));
 
+  @include mobile {
+    right: 0;
+  }
+
   &Back {
     left: -17px;
+
+    @include mobile {
+      left: 0;
+    }
   }
 
   &Buy {

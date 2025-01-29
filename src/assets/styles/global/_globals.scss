@@ -17,6 +17,10 @@ body {
   background-color: var(--color-bg);
 
   -webkit-tap-highlight-color: transparent;
+
+  @include tablet {
+    background-color: var(--color-light);
+  }
 }
 
 main {
