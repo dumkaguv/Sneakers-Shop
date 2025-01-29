@@ -5,9 +5,11 @@
   justify-content: center;
   text-transform: uppercase;
   border: none;
-  background-color: var(--color-green-20);
+  background-color: var(--color-accent);
   color: var(--color-light);
   padding: 14px 20px;
+  height: 55px;
+  border-radius: 18px;
 
   @include hover {
     background-color: color-mix(
@@ -22,11 +24,13 @@
   border-radius: 110px;
   width: 178px;
   height: 47px;
+  background-color: var(--color-green-20);
+}
+
+.medium {
+  width: 245px;
 }
 
 .large {
-  border-radius: 18px;
   width: 325px;
-  height: 55px;
-  background-color: var(--color-accent);
 }

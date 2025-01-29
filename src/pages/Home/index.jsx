@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Slider from "@/components/Slider";
 import ProductList from "@/components/ProductList";
 import SearchBar from "@/components/SearchBar";
-import Drawer from "@/components/Drawer";
 import useCartContext from "@/contexts/CartContext";
 
 import styles from "./Home.module.scss";
@@ -26,10 +25,9 @@ function Home() {
 
   return (
     <>
-      <Drawer />
       <Slider />
 
-      <section>
+      <section id="products">
         <div className={`${styles.row} container`}>
           <h2>
             {searchInputValue

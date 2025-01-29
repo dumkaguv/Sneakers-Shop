@@ -11,7 +11,6 @@
   width: 100%;
 }
 
-
 .logo {
   margin-bottom: 32px;
 }
@@ -32,6 +31,7 @@
   position: relative;
   right: -20px;
   width: 670px;
+  height: 350px;
 }
 
 .sliderButton {
@@ -49,8 +49,39 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.146);
 
   @include square(var(--size));
+
+  &Back {
+    left: -17px;
+  }
+
+  &Buy {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border: none;
+    background-color: var(--color-accent);
+    color: var(--color-light);
+    padding: 14px 20px;
+    height: 55px;
+    border-radius: 18px;
+
+    @include hover {
+      background-color: color-mix(
+        in srgb,
+        rgb(104, 246, 64) 30%,
+        var(--color-green-20)
+      );
+    }
+
+    border-radius: 110px;
+    width: 178px;
+    height: 47px;
+    background-color: var(--color-green-20);
+  }
 }
 
 .green {
-  color: #8BB43C;
+  color: #8bb43c;
 }

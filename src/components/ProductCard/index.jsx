@@ -13,19 +13,45 @@ function ProductCard({ parentId, price, name, image }) {
     setIsInCart(cartItems.some((cartItem) => cartItem.parentId === parentId));
   }, [cartItems]);
 
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setIsFavorite(
+      favorites.some((fav) => Number(fav.parentId) === Number(parentId))
+    );
+  }, []);
+
   async function onAddInCartButtonClick() {
     setIsInCart((prev) => !prev);
     isInCart ? await removeFromCart(item) : await addToCart(item);
 
-    await getCartItems();
+    getCartItems();
   }
+
+  function onFavoriteButtonClick() {
+    setIsFavorite((prev) => !prev);
+  }
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    let updatedFavorites;
+
+    if (isFavorite) {
+      updatedFavorites = [...favorites, item];
+    } else {
+      updatedFavorites = favorites.filter(
+        (fav) => Number(fav.parentId) !== Number(parentId)
+      );
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  }, [isFavorite]);
 
   return (
     <div className={styles.card}>
       <div className={styles.wrapper}>
         <img src={image} alt="" width={133} height={112} loading="lazy" />
         <button
-          onClick={() => setIsFavorite((prev) => !prev)}
+          onClick={onFavoriteButtonClick}
           className={`${styles.buttonAction} ${isFavorite && styles.isFavorite}`}
           type="button"
         >

@@ -1,0 +1,87 @@
+.root {
+  margin-top: 40px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.title {
+  font-size: fluid(24, 32);
+  font-weight: 700;
+}
+
+.goBack {
+  --size: 35px;
+
+  @include square(var(--size));
+
+  svg {
+    transition-duration: var(--transition-duration);
+    color: #c7c7c7;
+    cursor: pointer;
+
+    rect {
+      fill: white;
+    }
+
+    @include hover {
+      color: #9a9a9a;
+    }
+  }
+}
+
+.noFavoritesImage {
+  margin-bottom: 20px;
+}
+
+.noFavorites {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  align-items: center;
+  justify-content: center;
+  height: 50dvh;
+
+  &Title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &Info {
+    color: var(--color-black);
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.5;
+    margin-bottom: 15px;
+  }
+
+  &Button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--color-accent);
+    color: var(--color-light);
+    width: 245px;
+    padding: 14px 20px;
+    height: 55px;
+    border-radius: 18px;
+
+    @include hover {
+      background-color: color-mix(
+        in srgb,
+        rgb(104, 246, 64) 30%,
+        var(--color-green-20)
+      );
+    }
+
+    &Icon {
+      position: absolute;
+      left: 30px;
+    }
+  }
+}
